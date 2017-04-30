@@ -3,7 +3,10 @@
  */
 package com.fs.shopmanagement.service;
 
-import com.fs.shopmanagement.service.request.CustomerRequest;
+import java.util.List;
+
+import com.fs.shopmanagement.exception.NoDataFountException;
+import com.fs.shopmanagement.service.bean.CustomerVO;
 
 /**
  * @author Life
@@ -11,10 +14,10 @@ import com.fs.shopmanagement.service.request.CustomerRequest;
  */
 public interface CustomerService {
 
-	public CustomerRequest getCustomer(CustomerRequest request);
+	public List<CustomerVO> getCustomer(CustomerVO request) throws NoDataFountException;
 
-	public CustomerRequest addCustomer(CustomerRequest request);
+	public CustomerVO addCustomer(CustomerVO request);
 
-	public CustomerRequest updateCustomer(CustomerRequest request);
+	public CustomerVO updateCustomer(CustomerVO request);
 
 }

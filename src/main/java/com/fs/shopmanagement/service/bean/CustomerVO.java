@@ -1,15 +1,17 @@
 /**
  * 
  */
-package com.fs.shopmanagement.service.request;
+package com.fs.shopmanagement.service.bean;
+
+import java.io.Serializable;
 
 /**
  * @author Life
  *
  */
-public class CustomerRequest extends BaseRequest {
+public class CustomerVO implements Serializable {
 
-	private static final long serialVersionUID = -5543079199615510495L;
+	private static final long serialVersionUID = -8897363840102365573L;
 
 	private int customerId;
 
@@ -18,6 +20,12 @@ public class CustomerRequest extends BaseRequest {
 	private String middleName;
 
 	private String lastName;
+
+	private int age;
+
+	private String phoneNumber;
+
+	private String sex;
 
 	/**
 	 * @return the customerId
@@ -77,6 +85,51 @@ public class CustomerRequest extends BaseRequest {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the age
+	 */
+	public int getAge() {
+		return age;
+	}
+
+	/**
+	 * @param age
+	 *            the age to set
+	 */
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	/**
+	 * @return the phoneNumber
+	 */
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * @param phoneNumber
+	 *            the phoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	/**
+	 * @return the sex
+	 */
+	public String getSex() {
+		return sex;
+	}
+
+	/**
+	 * @param sex
+	 *            the sex to set
+	 */
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 }

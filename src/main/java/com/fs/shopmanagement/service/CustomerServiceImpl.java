@@ -3,13 +3,16 @@
  */
 package com.fs.shopmanagement.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fs.shopmanagement.converter.CustomerConverter;
-import com.fs.shopmanagement.doa.GetCustomerDAO;
+import com.fs.shopmanagement.doa.CustomerDAO;
 import com.fs.shopmanagement.doa.domain.CustomerEntity;
-import com.fs.shopmanagement.service.request.CustomerRequest;
+import com.fs.shopmanagement.exception.NoDataFountException;
+import com.fs.shopmanagement.service.bean.CustomerVO;
 
 /**
  * @author Life
@@ -18,26 +21,26 @@ import com.fs.shopmanagement.service.request.CustomerRequest;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	private GetCustomerDAO customerDao;
+	private CustomerDAO customerDao;
 
 	@Autowired
 	private CustomerConverter custConverter;
 
 	@Override
-	public CustomerRequest getCustomer(CustomerRequest request) {
-		CustomerEntity customerEntity = customerDao.getCustomerDetails(custConverter.getEntity(request));
+	public List<CustomerVO> getCustomer(CustomerVO request) throws NoDataFountException {
+		List<CustomerEntity> customerEntity = customerDao.getCustomerDetails(custConverter.getEntity(request));
+		return custConverter.getCustomerList(customerEntity);
+	}
+
+	@Override
+	public CustomerVO addCustomer(CustomerVO request) {
+		CustomerEntity customerEntity = customerDao.addCustomerDetails(custConverter.getEntity(request));
 		return custConverter.getRequest(customerEntity);
 	}
 
 	@Override
-	public CustomerRequest addCustomer(CustomerRequest request) {
-		CustomerEntity customerEntity = customerDao.getCustomerDetails(custConverter.getEntity(request));
-		return custConverter.getRequest(customerEntity);
-	}
-
-	@Override
-	public CustomerRequest updateCustomer(CustomerRequest request) {
-		CustomerEntity customerEntity = customerDao.getCustomerDetails(custConverter.getEntity(request));
+	public CustomerVO updateCustomer(CustomerVO request) {
+		CustomerEntity customerEntity = customerDao.updateCustomerDetails(custConverter.getEntity(request));
 		return custConverter.getRequest(customerEntity);
 	}
 

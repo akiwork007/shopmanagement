@@ -1,35 +1,56 @@
 package com.fs.shopmanagement.doa.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "customer_master_tbl")
-public class CustomerEntity {
+public class CustomerEntity implements Serializable {
+
+	private static final long serialVersionUID = -8103743304677049782L;
 
 	@Id
-	@Column
+	@Column(name = "customer_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int CustomerId;
+	private int customerId;
 
-	@Column
-	private String FirstName;
+	@NotNull
+	@Column(name = "first_name")
+	private String firstName;
 
-	@Column
-	private String MiddleName;
+	@Column(name = "middle_name")
+	private String middleName;
 
-	@Column
-	private String LastName;
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "age")
+	private int age;
+
+	@Column(name = "phone_number")
+	private String phoneNumber;
+
+	@Column(name = "sex")
+	private String sex;
+
+	@OneToOne
+	@JoinColumn(name = "customer_id")
+	private AddressEntity address;
 
 	/**
 	 * @return the customerId
 	 */
 	public int getCustomerId() {
-		return CustomerId;
+		return customerId;
 	}
 
 	/**
@@ -37,14 +58,14 @@ public class CustomerEntity {
 	 *            the customerId to set
 	 */
 	public void setCustomerId(int customerId) {
-		CustomerId = customerId;
+		this.customerId = customerId;
 	}
 
 	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 
 	/**
@@ -52,14 +73,14 @@ public class CustomerEntity {
 	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 
 	/**
 	 * @return the middleName
 	 */
 	public String getMiddleName() {
-		return MiddleName;
+		return middleName;
 	}
 
 	/**
@@ -67,14 +88,14 @@ public class CustomerEntity {
 	 *            the middleName to set
 	 */
 	public void setMiddleName(String middleName) {
-		MiddleName = middleName;
+		this.middleName = middleName;
 	}
 
 	/**
 	 * @return the lastName
 	 */
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	/**
@@ -82,7 +103,67 @@ public class CustomerEntity {
 	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the age
+	 */
+	public int getAge() {
+		return age;
+	}
+
+	/**
+	 * @param age
+	 *            the age to set
+	 */
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	/**
+	 * @return the phoneNumber
+	 */
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * @param phoneNumber
+	 *            the phoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	/**
+	 * @return the sex
+	 */
+	public String getSex() {
+		return sex;
+	}
+
+	/**
+	 * @param sex
+	 *            the sex to set
+	 */
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	/**
+	 * @return the address
+	 */
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	/**
+	 * @param address
+	 *            the address to set
+	 */
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
 
 }
